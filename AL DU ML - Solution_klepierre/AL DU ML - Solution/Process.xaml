@@ -1,0 +1,256 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FileName" Type="InArgument(x:String)" />
+    <x:Property Name="out_ResultDT" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>803,2037</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="88">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities.Editors</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.ValidationStation</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="520,1972" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="shortName" />
+      <Variable x:TypeArguments="p6:DocumentTaxonomy" Name="ribTaxonomy" />
+      <Variable x:TypeArguments="x:String" Name="ocrText" />
+      <Variable x:TypeArguments="p4:Document" Name="ocrDOM" />
+      <Variable x:TypeArguments="p3:ExtractionResult" Name="extractionResults" />
+      <Variable x:TypeArguments="p3:ExtractionResult" Name="validatedResults" />
+      <Variable x:TypeArguments="sd:DataSet" Name="resultDataSet" />
+      <Variable x:TypeArguments="x:String" Default="Em2jcW2SizdHtGFHtINaZgx93dtj3+BUm/2AaLXYYu0DjZ6LOQfCRWtoDL+Oz5Xd" Name="DU_API_Key" />
+      <Variable x:TypeArguments="x:String" Default="[IO.Directory.GetCurrentDirectory]" Name="path_project" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="478,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[shortName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.GetFileNameWithoutExtension(in_FileName)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="478,104" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_4" Taxonomy="[ribTaxonomy]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p:LoadTaxonomy>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;OCR en cours sur &quot; + in_FileName]" />
+    <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[ocrDOM]" DocumentPath="[in_FileName]" DocumentText="[ocrText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="478,297" sap2010:WorkflowViewState.IdRef="DigitizeDocument_4">
+      <p:DigitizeDocument.OCREngine>
+        <ActivityFunc x:TypeArguments="sd1:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Argument2="{x:Reference __ReferenceID0}">
+          <ActivityFunc.Argument1>
+            <DelegateInArgument x:TypeArguments="sd1:Image" Name="Image" />
+          </ActivityFunc.Argument1>
+          <p1:UiPathDocumentOCR Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="[DU_API_Key]" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" Endpoint="https://du.uipath.com/ocr/?edition=enterprise" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,25" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_4" Image="[Image]" Language="auto" Profile="None" Scale="1" Timeout="100000">
+            <p1:UiPathDocumentOCR.PredictionId>
+              <InArgument x:TypeArguments="x:String">
+                <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_28">
+                  <DelegateInArgument x:TypeArguments="x:String" x:Name="__ReferenceID0" Name="PredictionId" />
+                </DelegateArgumentValue>
+              </InArgument>
+            </p1:UiPathDocumentOCR.PredictionId>
+          </p1:UiPathDocumentOCR>
+        </ActivityFunc>
+      </p:DigitizeDocument.OCREngine>
+    </p:DigitizeDocument>
+    <p2:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[ocrDOM]" DocumentPath="[in_FileName]" DocumentText="[ocrText]" DocumentTypeId="NoGroup.NoCategory.TenantRequestForm" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="478,484" sap2010:WorkflowViewState.IdRef="DataExtractionScope_3" Taxonomy="[ribTaxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI1d7dba984aad4761b637f2ea09a6ec70&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.TenantRequestForm&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.TenantRequestForm.Shopname&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopname&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_number&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_number&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Contract_number&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Contract_number&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_email&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_email&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_fullname&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_fullname&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_address&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_address&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_postcode&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_postcode&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_city&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_city&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Partner_country&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_country&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Billing_name&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_name&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Billing_address&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_address&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Billing_postcode&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_postcode&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Billing_city&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_city&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Billing_country&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_country&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankname&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankname&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankaccount_number&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankaccount_number&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_swift&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_swift&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_iban&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_iban&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_account_holdername&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_account_holdername&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Payment_landofbank&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_landofbank&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.TenantRequestForm.Shopping_center&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopping_center&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UI1d7dba984aad4761b637f2ea09a6ec70&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UI1d7dba984aad4761b637f2ea09a6ec70&quot;:[]}}">
+      <p2:DataExtractionScope.Extractors>
+        <p2:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="Em2jcW2SizdHtGFHtINaZgx93dtj3+BUm/2AaLXYYu0DjZ6LOQfCRWtoDL+Oz5Xd" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="234,162" sap2010:WorkflowViewState.IdRef="FormExtractor_4" MinOverlapPercentage="65" PersistenceId="UI1d7dba984aad4761b637f2ea09a6ec70" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm&quot;,&quot;FormId&quot;:&quot;47131e65&quot;,&quot;FormName&quot;:&quot;Mytenantrequetsform&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;This&quot;,&quot;Box&quot;:[75.0,56.64,20.76,10.33]},{&quot;Text&quot;:&quot;form&quot;,&quot;Box&quot;:[75.0,80.51,22.02,10.33]},{&quot;Text&quot;:&quot;will&quot;,&quot;Box&quot;:[75.0,105.57,15.16,10.33]},{&quot;Text&quot;:&quot;be&quot;,&quot;Box&quot;:[75.0,123.79,12.28,10.33]},{&quot;Text&quot;:&quot;used&quot;,&quot;Box&quot;:[75.0,139.14,23.9,10.33]},{&quot;Text&quot;:&quot;for&quot;,&quot;Box&quot;:[75.0,166.02,12.93,10.33]},{&quot;Text&quot;:&quot;financial&quot;,&quot;Box&quot;:[75.0,181.97,40.38,10.33]},{&quot;Text&quot;:&quot;correspondence,&quot;,&quot;Box&quot;:[75.0,225.4,82.04,10.33]},{&quot;Text&quot;:&quot;invoicing&quot;,&quot;Box&quot;:[75.0,310.61,42.75,10.33]},{&quot;Text&quot;:&quot;and&quot;,&quot;Box&quot;:[75.0,356.44,18.38,10.33]},{&quot;Text&quot;:&quot;potential&quot;,&quot;Box&quot;:[75.0,377.89,41.49,10.33]},{&quot;Text&quot;:&quot;payments.&quot;,&quot;Box&quot;:[75.0,422.42,50.7,10.33]},{&quot;Text&quot;:&quot;Identification&quot;,&quot;Box&quot;:[100.24,56.64,89.81,14.97]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopname&quot;,&quot;Box&quot;:[155.0061,143.6767,398.0721,12.3593]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_number&quot;,&quot;Box&quot;:[238.4313,145.2216,398.5871,15.4491]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Contract_number&quot;,&quot;Box&quot;:[187.4492,145.2216,398.0721,12.8743]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_fullname&quot;,&quot;Box&quot;:[272.9343,144.7067,396.0122,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_address&quot;,&quot;Box&quot;:[288.3834,144.7067,399.102,15.4491]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_postcode&quot;,&quot;Box&quot;:[322.3715,143.6767,63.3414,11.8443]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_city&quot;,&quot;Box&quot;:[320.3116,257.4852,150.8863,11.3293]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_country&quot;,&quot;Box&quot;:[321.8565,476.8626,65.4012,12.8743]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_name&quot;,&quot;Box&quot;:[359.9643,144.1917,398.5871,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_address&quot;,&quot;Box&quot;:[377.4733,142.6468,401.1619,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_postcode&quot;,&quot;Box&quot;:[410.9464,144.7067,60.2515,11.8443]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_city&quot;,&quot;Box&quot;:[407.3416,258.5151,151.4013,12.3593]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_country&quot;,&quot;Box&quot;:[410.9464,478.4075,63.3414,8.2395]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankname&quot;,&quot;Box&quot;:[570.5872,194.1438,351.2098,20.5988]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankaccount_number&quot;,&quot;Box&quot;:[598.9106,192.5989,350.1799,18.024]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_swift&quot;,&quot;Box&quot;:[621.0543,192.084,351.2098,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_iban&quot;,&quot;Box&quot;:[636.5034,189.5091,352.7547,13.9042]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_account_holdername&quot;,&quot;Box&quot;:[654.5274,191.569,351.2098,11.8443]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_landofbank&quot;,&quot;Box&quot;:[668.4316,192.5989,350.1799,15.4491]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopping_center&quot;,&quot;Box&quot;:[173.545,145.2216,397.5571,10.8144]}],&quot;Tables&quot;:[]},{&quot;Page&quot;:1,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[],&quot;Fields&quot;:[],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm&quot;,&quot;FormId&quot;:&quot;eb5b3873&quot;,&quot;FormName&quot;:&quot;NO_tenantrequestForm&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Leietaker-registreringsskjema&quot;,&quot;Box&quot;:[24.05,169.94,262.44,18.8]},{&quot;Text&quot;:&quot;Dette&quot;,&quot;Box&quot;:[74.83,56.64,23.8,9.32]},{&quot;Text&quot;:&quot;skjemaet&quot;,&quot;Box&quot;:[74.83,83.17,40.06,9.32]},{&quot;Text&quot;:&quot;vil&quot;,&quot;Box&quot;:[74.83,125.96,9.51,9.32]},{&quot;Text&quot;:&quot;bli&quot;,&quot;Box&quot;:[74.83,138.19,9.99,9.32]},{&quot;Text&quot;:&quot;benyttet&quot;,&quot;Box&quot;:[74.83,151.0,35.52,9.32]},{&quot;Text&quot;:&quot;i&quot;,&quot;Box&quot;:[74.83,189.25,2.21,9.32]},{&quot;Text&quot;:&quot;forbindelse&quot;,&quot;Box&quot;:[74.83,194.18,48.92,9.32]},{&quot;Text&quot;:&quot;med&quot;,&quot;Box&quot;:[74.83,245.95,19.34,9.32]},{&quot;Text&quot;:&quot;økonomisk&quot;,&quot;Box&quot;:[74.83,268.06,48.35,9.32]},{&quot;Text&quot;:&quot;korrespondanse,&quot;,&quot;Box&quot;:[74.83,319.23,74.35,9.32]},{&quot;Text&quot;:&quot;fakturering&quot;,&quot;Box&quot;:[74.83,396.42,47.14,9.32]},{&quot;Text&quot;:&quot;og&quot;,&quot;Box&quot;:[74.83,446.4,11.08,9.32]},{&quot;Text&quot;:&quot;potensielle&quot;,&quot;Box&quot;:[74.83,460.21,47.84,9.32]},{&quot;Text&quot;:&quot;innbetalinger.&quot;,&quot;Box&quot;:[86.37,56.64,59.82,9.32]},{&quot;Text&quot;:&quot;Identifikasjon&quot;,&quot;Box&quot;:[117.52,56.64,93.4,14.97]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopname&quot;,&quot;Box&quot;:[170.9702,149.3414,399.102,14.4192]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_number&quot;,&quot;Box&quot;:[255.9403,147.2815,398.5871,25.2335]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_fullname&quot;,&quot;Box&quot;:[296.108,148.3115,397.0422,13.9042]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_address&quot;,&quot;Box&quot;:[314.6469,148.3115,402.7068,14.4192]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_postcode&quot;,&quot;Box&quot;:[347.09,146.2516,63.8563,14.4192]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_city&quot;,&quot;Box&quot;:[347.605,263.6648,140.5869,9.7844]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_country&quot;,&quot;Box&quot;:[346.5751,478.4075,63.8563,11.8443]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_name&quot;,&quot;Box&quot;:[385.7128,148.8264,405.7967,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_address&quot;,&quot;Box&quot;:[399.617,148.3115,397.0422,16.4791]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_postcode&quot;,&quot;Box&quot;:[433.0901,148.3115,56.1318,13.9042]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_city&quot;,&quot;Box&quot;:[434.635,260.06,150.8863,11.8443]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_country&quot;,&quot;Box&quot;:[432.5751,483.0422,64.3713,15.4491]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankname&quot;,&quot;Box&quot;:[581.9165,198.2636,348.6349,14.9341]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankaccount_number&quot;,&quot;Box&quot;:[601.4854,199.2935,348.12,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_swift&quot;,&quot;Box&quot;:[616.4195,197.7486,336.7906,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_iban&quot;,&quot;Box&quot;:[631.3537,197.2337,336.2757,13.3892]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_account_holdername&quot;,&quot;Box&quot;:[647.8327,196.7187,331.6409,14.4192]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_landofbank&quot;,&quot;Box&quot;:[664.3118,198.2636,347.605,16.4791]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopping_center&quot;,&quot;Box&quot;:[187.4492,147.7965,399.102,15.9641]}],&quot;Tables&quot;:[]},{&quot;Page&quot;:1,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[],&quot;Fields&quot;:[],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.TenantRequestForm&quot;,&quot;FormId&quot;:&quot;8e39025b&quot;,&quot;FormName&quot;:&quot;DK_tenantrequestForm&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Lejers&quot;,&quot;Box&quot;:[24.05,187.7,54.57,18.8]},{&quot;Text&quot;:&quot;kontaktoplysninger&quot;,&quot;Box&quot;:[24.05,247.85,166.78,18.8]},{&quot;Text&quot;:&quot;Blankettens&quot;,&quot;Box&quot;:[75.0,56.64,57.6,10.33]},{&quot;Text&quot;:&quot;information&quot;,&quot;Box&quot;:[75.0,117.35,54.35,10.33]},{&quot;Text&quot;:&quot;vil&quot;,&quot;Box&quot;:[75.0,174.56,10.37,10.33]},{&quot;Text&quot;:&quot;blive&quot;,&quot;Box&quot;:[75.0,187.98,22.58,10.33]},{&quot;Text&quot;:&quot;anvendt&quot;,&quot;Box&quot;:[75.0,213.63,39.24,10.33]},{&quot;Text&quot;:&quot;til&quot;,&quot;Box&quot;:[75.0,255.9,7.96,10.33]},{&quot;Text&quot;:&quot;korrespondance&quot;,&quot;Box&quot;:[75.0,266.92,78.85,10.33]},{&quot;Text&quot;:&quot;af&quot;,&quot;Box&quot;:[75.0,348.84,9.1,10.33]},{&quot;Text&quot;:&quot;finansiel&quot;,&quot;Box&quot;:[75.0,360.98,40.38,10.33]},{&quot;Text&quot;:&quot;karakter,&quot;,&quot;Box&quot;:[75.0,404.41,42.88,10.33]},{&quot;Text&quot;:&quot;ved&quot;,&quot;Box&quot;:[75.0,450.34,17.8,10.33]},{&quot;Text&quot;:&quot;fakturering&quot;,&quot;Box&quot;:[75.0,471.1,51.97,10.33]},{&quot;Text&quot;:&quot;og&quot;,&quot;Box&quot;:[75.0,526.15,12.13,10.33]},{&quot;Text&quot;:&quot;ved&quot;,&quot;Box&quot;:[87.74,56.64,17.8,10.33]},{&quot;Text&quot;:&quot;eventuelle&quot;,&quot;Box&quot;:[87.74,77.52,50.18,10.33]},{&quot;Text&quot;:&quot;udbetalinger.&quot;,&quot;Box&quot;:[87.74,130.76,63.55,10.33]},{&quot;Text&quot;:&quot;Identifikation&quot;,&quot;Box&quot;:[112.96,56.64,89.81,14.97]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopname&quot;,&quot;Box&quot;:[155.0061,145.2216,398.5871,14.9341]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_number&quot;,&quot;Box&quot;:[239.4612,142.1318,400.132,15.9641]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_fullname&quot;,&quot;Box&quot;:[274.0636,144.4507,397.1303,14.4014]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_address&quot;,&quot;Box&quot;:[289.3378,143.1415,402.3672,15.2742]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_postcode&quot;,&quot;Box&quot;:[322.9412,143.1415,56.7329,13.0922]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_city&quot;,&quot;Box&quot;:[323.3776,257.0437,151.8696,10.9102]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Partner_country&quot;,&quot;Box&quot;:[322.5048,476.5564,66.3339,10.9102]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_name&quot;,&quot;Box&quot;:[360.0358,143.1415,400.6216,17.0199]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_address&quot;,&quot;Box&quot;:[376.6192,143.1415,398.876,14.4014]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_postcode&quot;,&quot;Box&quot;:[409.7862,142.7051,54.9873,13.5286]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_city&quot;,&quot;Box&quot;:[410.659,256.1709,139.6502,12.6558]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Billing_country&quot;,&quot;Box&quot;:[410.2226,475.6836,64.1518,9.601]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_bankaccount_number&quot;,&quot;Box&quot;:[578.2392,192.8919,349.562,15.2742]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_swift&quot;,&quot;Box&quot;:[595.2591,193.7647,349.9984,14.4014]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_iban&quot;,&quot;Box&quot;:[610.5334,193.7647,350.4348,14.8378]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_account_holdername&quot;,&quot;Box&quot;:[626.244,192.8919,350.8712,16.5835]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Payment_landofbank&quot;,&quot;Box&quot;:[643.2639,194.2011,347.8164,16.1471]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.TenantRequestForm.Shopping_center&quot;,&quot;Box&quot;:[171.0715,142.7051,400.6216,17.0199]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+          <p2:FormExtractor.DocumentBounds>
+            <InArgument x:TypeArguments="p3:ResultsDocumentBounds">
+              <DelegateArgumentValue x:TypeArguments="p3:ResultsDocumentBounds">
+                <DelegateInArgument x:TypeArguments="p3:ResultsDocumentBounds" Name="DocumentBounds" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentBounds>
+          <p2:FormExtractor.DocumentObjectModel>
+            <InArgument x:TypeArguments="p4:Document">
+              <DelegateArgumentValue x:TypeArguments="p4:Document">
+                <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentObjectModel>
+          <p2:FormExtractor.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentPath>
+          <p2:FormExtractor.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentText>
+          <p2:FormExtractor.ExtractorDocumentType>
+            <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+              <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.ExtractorDocumentType>
+          <p2:FormExtractor.ExtractorResult>
+            <OutArgument x:TypeArguments="p5:ExtractorResult">
+              <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p2:FormExtractor.ExtractorResult>
+          <p2:FormExtractor.PredictionId>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.PredictionId>
+        </p2:FormExtractor>
+      </p2:DataExtractionScope.Extractors>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p2:DataExtractionScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,92" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Extraction d'information...&quot;]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="478,25" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="300,113" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p:PresentValidationStation FieldsValidationConfidence="{x:Null}" AutomaticExtractionResults="[extractionResults]" DisplayName="Present Validation Station" DocumentObjectModel="[ocrDOM]" DocumentPath="[in_FileName]" DocumentText="[ocrText]" sap:VirtualizedContainerService.HintSize="258,25" sap2010:WorkflowViewState.IdRef="PresentValidationStation_6" ShowOnlyRelevantPageRange="False" Taxonomy="[ribTaxonomy]" ValidatedExtractionResults="[validatedResults]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </p:PresentValidationStation>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <p2:ExportExtractionResults DataSet="[resultDataSet]" DisplayName="Export Extraction Results" ExtractionResult="[extractionResults]" sap:VirtualizedContainerService.HintSize="478,174" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_4" IncludeConfidence="False" IncludeOCRConfidence="False">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p2:ExportExtractionResults>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,92" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Traitement de &quot; + shortName + &quot; terminé&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="478,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[out_ResultDT]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[resultDataSet.Tables(1)]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
